@@ -1,0 +1,9 @@
+Flask
+flask_restful
+Jinja2
+requests
+uWSGI
+Werkzeug
+
+flake8
+pydocstyle

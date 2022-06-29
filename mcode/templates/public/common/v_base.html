@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<!--  __  _________          __
+     /  |/  / ____/___  ____/ /__
+    / /|_/ / /   / __ \/ __  / _ \
+   / /  / / /___/ /_/ / /_/ /  __/
+  /_/  /_/\____/\____/\__,_/\___/
+ -->
+
+<head>
+
+  <!--View's title -->
+  <title>
+    {% block view_title %}{% endblock %}
+    MCode
+  </title>
+
+  <!--Headers -->
+  {% include "/public/common/v_head.html" %}
+
+  <!--View's headers -->
+  {% block view_header %}{% endblock %}
+
+</head>
+
+<body>
+
+<!--Vue element defaul: "main-app" -->
+{% if vue_el is not defined %}
+  {% set vue_el = 'main-app' %}
+{% endif %}
+
+<div
+  id="{{ vue_el }}"
+  v-cloak
+  >
+  <v-app>
+    <!-- View's content -->
+    {% block view_content %}{% endblock %}
+  </v-app>
+</div>
+
+<!--Footers -->
+{% include "/public/common/v_footer.html" %}
+
+<!--View's footer -->
+{% block view_footer %}{% endblock %}
+
+</body>
+</html>

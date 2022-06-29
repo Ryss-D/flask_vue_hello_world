@@ -1,0 +1,29 @@
+{
+  "name": "molapp_mhs",
+  "eslintConfig": {
+    "extends": "eslint:recommended",
+    "env": {
+      "browser": true,
+      "es6": false,
+      "jquery": true
+    },
+    "rules": {
+      "no-mixed-spaces-and-tabs": 2,
+      "no-trailing-spaces": "error",
+      "spaced-comment": [
+        "error",
+        "always"
+      ],
+      "curly": 2,
+      "one-var": 2,
+      "quotes": [
+        2,
+        "single"
+      ],
+      "wrap-iife": [
+        2,
+        "inside"
+      ]
+    }
+  }
+}

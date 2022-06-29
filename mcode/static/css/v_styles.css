@@ -1,0 +1,12 @@
+[v-cloak] {
+	display: none;
+}
+
+.overflow {
+	overflow: auto;
+}
+
+/* Identity styles */
+#identity-app .application--wrap{
+	background-color: #0b549b;
+}

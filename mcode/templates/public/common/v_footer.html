@@ -1,0 +1,35 @@
+<!--Vendor libs -->
+<script src="{{ url_for('static', filename='js/vendor/jquery-3.4.1.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/vendor/vue-2.6.11/vue.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/vendor/vuetify-v2.4.2/vuetify.min.js') }}"></script>
+<script>
+
+// Vuetify configurations
+  var mcVtfOpt = {
+    icons: {
+      iconfont: 'md',
+    },
+    theme: {
+      themes: {
+        light: {
+          primary: '#0b549b',
+          success: '#3aaa35',
+          info: '#1d71b8',
+          warning: '#f39200',
+          secondary: '#424242',
+          accent: '#82B1FF',
+          error: '#e7332a',
+        },
+      },
+    },
+  };
+
+  // Change Vue delimiter to avoid conflict with Jinja2 template delimiter
+  Vue.options.delimiters = ['[[',']]'];
+
+  Vue.config.productionTip = false
+
+  // Install plugins
+  Vue.use(Vuetify);
+
+</script>

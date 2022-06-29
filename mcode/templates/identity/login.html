@@ -1,0 +1,120 @@
+{% extends "/public/common/v_base.html" %}
+
+{% set vue_el = 'identity-app' %}
+
+{% block view_content %}
+<div v-cloak>
+    <v-main>
+
+        <!-- Login Form -->
+        <v-container id="loginform" class="mt-1 pt-12">
+            <v-layout wrap>
+                <v-flex sm6 offset-sm3>
+
+                    <!-- Logo -->
+                    <v-avatar
+                        class="d-block mx-auto"
+                        size="100px"
+                        color="white"
+                        >
+                        <img
+                            src="{{ url_for('static',filename='img/logo-mcode.png') }}"
+                            alt="avatar">
+                    </v-avatar>
+
+                    <!-- Login form -->
+                    <v-card color="white" class="pa-4 mx-auto mt-12" max-width="400">
+                        <p
+                            class="
+                                display-3
+                                font-weight-light
+                                text-center"
+                            >
+                            Log in
+                        </p>
+                        <v-form
+                            ref="loginForm"
+                            v-model="loginIsValid"
+                            lazy-validation
+                            @submit.prevent="tryLogin"
+                            class="ma-2 pa-2">
+                            <v-text-field
+                                v-model.trim="app_id"
+                                :rules="[formRules.required]"
+                                required
+                                placeholder="ID"
+                                label="ID"
+                                name="app_id"
+                                ref="app_id"
+                                :append-icon="'person'"
+                            ></v-text-field>
+                            <v-text-field
+                                v-model="password"
+                                :type="showPassword ? 'text' : 'password'"
+                                :rules="[formRules.required]"
+                                required
+                                placeholder="Password"
+                                label="Password"
+                                name="password"
+                                :append-icon="showPassword ? 'visibility' : 'visibility_off'"
+                                @click:append="showPassword = !showPassword"
+                            ></v-text-field>
+                            <v-text-field
+                                v-model="otp"
+                                name="otp"
+                                ref="otp"
+                                placeholder="Token"
+                                label="Token"
+                                required
+                                :rules="otpRules"
+                                autocomplete="off"
+                                append-icon="phonelink_lock"
+                                type="number"
+                            ></v-text-field>
+                            <v-btn
+                                type="submit"
+                                color="primary"
+                                large
+                                block
+                                class="mt-12">
+                                Validate Token
+                            </v-btn>
+                        </v-form>
+                    </v-card>
+
+                    <!-- Help links -->
+                    <a
+                        href="#"
+                        class="mt-4 d-block text-center caption grey--text"
+                        >
+                        Forgot credentials?
+                    </a>
+
+                </v-flex>
+            </v-layout>
+        </v-container>
+
+        <!-- Login response from login API as a code block -->
+        <v-container id="loginresponse" class="mt-1 pt-12">
+            <v-layout wrap>
+                <v-flex>
+                    <v-card
+                        color="white"
+                        class="pa-4 mx-auto mt-12">
+                        <v-cart-title>
+                            <h1>Login Response</h1>
+                        </v-cart-title>
+                        <v-card-text>
+                            <pre>[[loginResponse]]</pre>
+                        </v-card-text>
+                    </v-card>
+                </v-flex>
+            </v-layout>
+        </v-container>
+    </v-main>
+</div>
+{% endblock %}
+
+{% block view_footer %}
+<script src="{{ url_for('static', filename='js/resources/identity/login.js') }}"></script>
+{% endblock %}
